@@ -4,7 +4,11 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 2rem 10rem;
+
+  @media (max-width: 768px) {
+    padding: 1.75rem 0;
+  }
 `
 
 export const HeaderSubcontainer = styled.div`
@@ -30,6 +34,7 @@ export const ShoppingCart = styled.span`
   background: ${(props) => props.theme['yellow-light']};
   color: ${(props) => props.theme['yellow-dark']};
   border-radius: 6px;
+  cursor: pointer;
 
   display: flex;
   align-items: center;

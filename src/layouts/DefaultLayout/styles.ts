@@ -5,8 +5,6 @@ export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 0rem 10rem;
-
   // Responsividade
   @media (max-width: 768px) {
     padding: 0 2rem;
