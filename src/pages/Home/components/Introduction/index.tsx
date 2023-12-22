@@ -4,7 +4,9 @@ import { IntroductionContainer } from './styles'
 export function Introduction() {
   return (
     <IntroductionContainer>
-      <TitleXL>Encontre o café perfeito para qualquer hora do dia</TitleXL>
+      <TitleXL $fontColor="title">
+        Encontre o café perfeito para qualquer hora do dia
+      </TitleXL>
     </IntroductionContainer>
   )
 }
