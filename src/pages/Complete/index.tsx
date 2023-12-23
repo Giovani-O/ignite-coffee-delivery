@@ -1,5 +1,3 @@
-import { TitleXL } from '../../styles/fonts'
-
 export function Complete() {
-  return <TitleXL>Complete</TitleXL>
+  return <h1>Complete</h1>
 }

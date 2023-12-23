@@ -28,6 +28,13 @@ export const Location = styled.span`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+
+  p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875rem;
+    line-height: 130%;
+    font-weight: 400;
+  }
 `
 export const ShoppingCart = styled.span`
   padding: 0.5rem;

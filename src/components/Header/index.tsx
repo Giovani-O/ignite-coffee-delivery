@@ -5,8 +5,7 @@ import {
   Location,
   ShoppingCart,
 } from './styles'
-import Logo from '../../assets/logo.svg'
-import { TextS } from '../../styles/fonts'
+import Logo from '../../assets/images/logo.svg'
 
 export function Header() {
   return (
@@ -16,7 +15,7 @@ export function Header() {
       <HeaderSubcontainer>
         <Location>
           <MapPin weight="fill" />
-          <TextS>Hortolândia, SP</TextS>
+          <p>Hortolândia, SP</p>
         </Location>
         <ShoppingCart>
           <ShoppingCartSimple weight="fill" />

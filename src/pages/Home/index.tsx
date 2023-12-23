@@ -1,5 +1,11 @@
 import { Introduction } from './components/Introduction'
+import { Store } from './components/Store'
 
 export function Home() {
-  return <Introduction />
+  return (
+    <div>
+      <Introduction />
+      <Store />
+    </div>
+  )
 }
