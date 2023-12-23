@@ -26,7 +26,7 @@ export function Store() {
             <span>TRADICIONAL</span>{' '}
           </Tags>
           <h1>Expresso Tradicional</h1>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
+          <p>O tradicional café feito com água quente e grãos moídos </p>
 
           <CoffeCardOptions>
             <h1>9,90</h1>
