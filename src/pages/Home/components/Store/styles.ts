@@ -37,6 +37,13 @@ export const CoffeeCard = styled.div`
   border-radius: 6px 36px 6px 36px;
   padding: 0 1.25rem 1.25rem 1.25rem;
 
+  img {
+    width: 120px;
+    height: 120px;
+    margin-top: -20px;
+    align-self: center;
+  }
+
   span {
     background: ${(props) => props.theme['yellow-light']};
     color: ${(props) => props.theme['yellow-dark']};
@@ -58,7 +65,39 @@ export const CoffeeCard = styled.div`
     text-align: center;
     color: ${(props) => props.theme['base-subtitle']};
   }
+
+  p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875;
+    font-weight: 400;
+    line-height: 130%;
+    text-align: center;
+    color: ${(props) => props.theme['base-label']};
+  }
 `
+
+export const CoffeCardOptions = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 130%;
+    color: ${(props) => props.theme['base-text']};
+
+    &::before {
+      content: 'R$';
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 130%;
+      color: ${(props) => props.theme['base-text']};
+    }
+  }
+`
+
 export const Tags = styled.div`
   display: flex;
   justify-content: center;
