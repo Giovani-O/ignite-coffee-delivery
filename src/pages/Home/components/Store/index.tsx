@@ -7,6 +7,7 @@ export function Store() {
       <StoreTitle>Nossos cafés</StoreTitle>
 
       <StoreGrid>
+        {/* Fazer aqui o map */}
         <CoffeeCard />
       </StoreGrid>
     </StoreContainer>
