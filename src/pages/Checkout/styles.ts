@@ -34,8 +34,6 @@ export const AddressWrapper = styled.div`
   border-radius: 6px;
   background: ${(props) => props.theme['base-card']};
   padding: 2rem;
-  /* min-width: 640px;
-  max-width: 100%; */
   width: auto;
 
   span {
@@ -73,10 +71,8 @@ export const AddressWrapper = styled.div`
 export const PaymentMethodWrapper = styled.div`
   border-radius: 6px;
   background: ${(props) => props.theme['base-card']};
-  padding: 2.5rem;
-  /* min-width: 640px;
-  max-width: 100%; */
   width: auto;
+  padding: 2.5rem;
 
   span {
     display: flex;
@@ -146,11 +142,9 @@ export const OrderDetailsWrapper = styled.div`
   background: ${(props) => props.theme['base-card']};
   padding: 2.5rem;
   border-radius: 6px 36px 6px 36px;
-  /* max-width: 448px; */
   width: 100%;
 `
 export const CoffeeInfo = styled.section`
-  min-width: 368px;
   padding: 0.5rem 0.25rem 2rem 0.25rem;
   display: flex;
   flex-direction: row;
