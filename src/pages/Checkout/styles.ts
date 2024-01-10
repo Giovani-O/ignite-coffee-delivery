@@ -5,6 +5,7 @@ export const CheckoutWrapper = styled.main`
   display: flex;
   gap: 2rem;
   justify-content: space-between;
+  width: 100%;
 
   @media (max-width: 768px) {
     padding: 2.75rem 0;
@@ -33,7 +34,9 @@ export const AddressWrapper = styled.div`
   border-radius: 6px;
   background: ${(props) => props.theme['base-card']};
   padding: 2rem;
-  max-width: 640px;
+  /* min-width: 640px;
+  max-width: 100%; */
+  width: auto;
 
   span {
     display: flex;
@@ -71,7 +74,9 @@ export const PaymentMethodWrapper = styled.div`
   border-radius: 6px;
   background: ${(props) => props.theme['base-card']};
   padding: 2.5rem;
-  max-width: 640px;
+  /* min-width: 640px;
+  max-width: 100%; */
+  width: auto;
 
   span {
     display: flex;
@@ -115,7 +120,8 @@ export const PaymentMethodButton = styled.button`
   border: 1px solid transparent;
   border-radius: 6px;
   color: ${(props) => props.theme.purple};
-  min-width: 11.125rem;
+  /* min-width: 11.125rem; */
+  width: 100%;
   cursor: pointer;
   transition: 0.1s background-color;
 
@@ -140,7 +146,8 @@ export const OrderDetailsWrapper = styled.div`
   background: ${(props) => props.theme['base-card']};
   padding: 2.5rem;
   border-radius: 6px 36px 6px 36px;
-  max-width: 448px;
+  /* max-width: 448px; */
+  width: 100%;
 `
 export const CoffeeInfo = styled.section`
   min-width: 368px;
