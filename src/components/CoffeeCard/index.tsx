@@ -18,11 +18,11 @@ export function CoffeeCard() {
       <p>O tradicional café feito com água quente e grãos moídos </p>
 
       <CoffeCardOptions>
-        <h1> 9,90</h1>
+        <h1>{'9,90'}</h1>
 
         <form>
           {/* usar o Zod depois para fazer as validações */}
-          <input type="number" placeholder="0" min={0} max={9} />
+          <input type="number" placeholder="0" min={0} max={99} />
           <button>
             <ShoppingCartSimple weight="fill" />
           </button>

@@ -51,6 +51,7 @@ export const CoffeeCardContainer = styled.div`
 export const CoffeCardOptions = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 2.0625rem;
 
   h1 {
@@ -61,7 +62,7 @@ export const CoffeCardOptions = styled.div`
     color: ${(props) => props.theme['base-text']};
 
     &::before {
-      content: 'R$';
+      content: 'R$ ';
       font-family: 'Roboto', sans-serif;
       font-size: 0.875rem;
       font-weight: 400;
@@ -84,13 +85,17 @@ export const CoffeCardOptions = styled.div`
     text-align: center;
 
     font-family: 'Roboto', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 130%;
-    font-weight: 700;
+    font-weight: 400;
     color: ${(props) => props.theme['base-title']};
+
+    box-sizing: border-box;
+    padding: 1rem 0;
   }
 
   form button {
+    min-width: 38px;
     padding: 0.5rem;
     background: ${(props) => props.theme['purple-dark']};
     color: ${(props) => props.theme.white};

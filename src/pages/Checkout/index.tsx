@@ -4,6 +4,7 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
+  Trash,
 } from '@phosphor-icons/react'
 
 import {
@@ -14,6 +15,7 @@ import {
   PaymentMethodButton,
   PaymentMethodButtonsContainer,
   PaymentMethodWrapper,
+  TotalPrices,
 } from './styles'
 import { AddressForm } from './components/AddressForm'
 
@@ -64,16 +66,36 @@ export function Checkout() {
             <div>
               <img src={Traditional} alt="Café tradicional" />
               <div>
-                <h2>Expresso Tradicional</h2>
+                <h2>{'Expresso Tradicional'}</h2>
                 <div>
-                  <p>Num</p>
-                  <p>Remover</p>
+                  <input type="number" min="1" max="99"></input>
+
+                  <button>
+                    <Trash size={16} />
+                    <p>REMOVER</p>
+                  </button>
                 </div>
               </div>
             </div>
-
-            <h1>R$ 9,90</h1>
+            <h1>{'9,90'}</h1>
           </CoffeeInfo>
+
+          <TotalPrices>
+            <span>
+              <p>Total de itens</p>
+              <p>{'29,70'}</p>
+            </span>
+            <span>
+              <p>Entrega</p>
+              <p>{'3,50'}</p>
+            </span>
+            <span>
+              <h1>Total</h1>
+              <h1>{'33,20'}</h1>
+            </span>
+
+            <button>CONFIRMAR PEDIDO</button>
+          </TotalPrices>
         </OrderDetailsWrapper>
       </section>
     </CheckoutWrapper>
