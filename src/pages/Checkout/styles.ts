@@ -15,7 +15,7 @@ export const CheckoutWrapper = styled.main`
   section {
     display: flex;
     gap: 0.75rem;
-    width: 100%;
+    min-width: 40%;
   }
 
   & > section {

@@ -6,20 +6,25 @@ import {
   ShoppingCart,
 } from './styles'
 import Logo from '../../assets/images/logo.svg'
+import { NavLink } from 'react-router-dom'
 
 export function Header() {
   return (
     <HeaderContainer>
-      <img src={Logo} alt="" />
+      <NavLink to="/" title="Home">
+        <img src={Logo} alt="" />
+      </NavLink>
 
       <HeaderSubcontainer>
         <Location>
           <MapPin weight="fill" />
           <p>Hortolândia, SP</p>
         </Location>
-        <ShoppingCart>
-          <ShoppingCartSimple weight="fill" />
-        </ShoppingCart>
+        <NavLink to="/checkout" title="Pagamento">
+          <ShoppingCart>
+            <ShoppingCartSimple weight="fill" />
+          </ShoppingCart>
+        </NavLink>
       </HeaderSubcontainer>
     </HeaderContainer>
   )
