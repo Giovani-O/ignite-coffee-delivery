@@ -1,8 +1,6 @@
 import {
   IntroductionContainer,
   IntroductionContent,
-  Topic,
-  TopicIcon,
   TopicsGrid,
 } from './styles'
 import IntroductionImage from '../../../../assets/images/introduction-image.svg'
@@ -12,6 +10,7 @@ import {
   ShoppingCartSimple,
   Timer,
 } from '@phosphor-icons/react'
+import { Topic } from '../../../../components/Topic'
 
 export function Introduction() {
   return (
@@ -24,32 +23,44 @@ export function Introduction() {
         </p>
 
         <TopicsGrid>
-          <Topic>
+          {/* <Topic>
             <TopicIcon $backgroundColor="yellow-dark">
               <ShoppingCartSimple weight="fill" size={14} />
             </TopicIcon>
             <p>Compra simples e segura</p>
+          </Topic> */}
+          <Topic text="Compra simples e segura" backgroundColor="yellow-dark">
+            <ShoppingCartSimple weight="fill" size={14} />
           </Topic>
 
-          <Topic>
+          {/* <Topic>
             <TopicIcon $backgroundColor="gray">
               <Package weight="fill" size={14} />
             </TopicIcon>
             <p>Embalagem mantém o café intacto</p>
+          </Topic> */}
+          <Topic text="Compra simples e segura" backgroundColor="gray">
+            <Package weight="fill" size={14} />
           </Topic>
 
-          <Topic>
+          {/* <Topic>
             <TopicIcon $backgroundColor="yellow">
               <Timer weight="fill" size={14} />
             </TopicIcon>
             <p>Entrega rápida e rastreada</p>
+          </Topic> */}
+          <Topic text="Compra simples e segura" backgroundColor="yellow">
+            <Timer weight="fill" size={14} />
           </Topic>
 
-          <Topic>
+          {/* <Topic>
             <TopicIcon $backgroundColor="purple">
               <Coffee weight="fill" size={14} />
             </TopicIcon>
             <p>O café chega fresquinho até você</p>
+          </Topic> */}
+          <Topic text="Compra simples e segura" backgroundColor="purple">
+            <Coffee weight="fill" size={14} />
           </Topic>
         </TopicsGrid>
       </IntroductionContent>

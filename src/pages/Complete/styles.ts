@@ -20,6 +20,18 @@ export const CompleteOrderContainer = styled.main`
     line-height: 130%;
     color: ${(props) => props.theme['base-subtitle']};
   }
+
+  img {
+    max-height: 280px;
+  }
+
+  @media (max-width: 768px) {
+    margin: 1.75rem 0;
+
+    img {
+      display: none;
+    }
+  }
 `
 export const CompleteOrderInfo = styled.section`
   display: flex;
@@ -32,6 +44,15 @@ export const CompleteOrderInfo = styled.section`
     display: flex;
     flex-direction: column;
     padding: 2.8125rem 2.5rem;
+    gap: 2rem;
+    overflow: auto;
+    width: 526px;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 130%;
+    color: ${(props) => props.theme['base-text']};
 
     // Adição de gradiente à borda
     border: double 1px transparent; // 1
@@ -55,5 +76,11 @@ export const CompleteOrderInfo = styled.section`
     // 4 - O segundo gradiente é a cor da borda
     // 5 - O background vai começar na borda da section
     // 6 - background-clip define onde o background da section vai ser visível
+
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 `
