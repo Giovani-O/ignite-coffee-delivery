@@ -10,6 +10,7 @@ export const CheckoutWrapper = styled.main`
   @media (max-width: 768px) {
     padding: 2.75rem 0;
     background-image: none;
+    flex-direction: column;
   }
 
   section {
@@ -104,6 +105,10 @@ export const PaymentMethodWrapper = styled.div`
 export const PaymentMethodButtonsContainer = styled.div`
   display: flex;
   gap: 0.75rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export const PaymentMethodButton = styled.button`
@@ -160,10 +165,6 @@ export const CoffeeInfo = styled.section`
     display: flex;
     flex-direction: row;
     gap: 1.25rem;
-
-    img {
-      max-width: 64px;
-    }
   }
 
   div div div {
@@ -225,6 +226,10 @@ export const CoffeeInfo = styled.section`
     &::before {
       content: 'R$ ';
     }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `
 
