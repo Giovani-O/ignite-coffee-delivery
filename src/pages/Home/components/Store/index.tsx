@@ -1,5 +1,6 @@
 import { CoffeeCard } from '../../../../components/CoffeeCard'
 import { StoreContainer, StoreGrid, StoreTitle } from './styles'
+import CoffeesTypes from '../../../../assets/coffees/CoffeesData.json'
 
 export function Store() {
   return (
@@ -7,8 +8,9 @@ export function Store() {
       <StoreTitle>Nossos cafés</StoreTitle>
 
       <StoreGrid>
-        {/* Fazer aqui o map */}
-        <CoffeeCard />
+        {CoffeesTypes.CoffeesData.map((type) => (
+          <CoffeeCard key={type.id} type={type} />
+        ))}
       </StoreGrid>
     </StoreContainer>
   )

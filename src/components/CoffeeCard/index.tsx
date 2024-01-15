@@ -1,24 +1,38 @@
-import TraditionalCoffee from '../../assets/coffees/images/cafe-tradicional.png'
 import { ShoppingCartSimple } from '@phosphor-icons/react'
 
 import { CoffeeCardContainer, CoffeCardOptions, Tags } from './styles'
 
-export function CoffeeCard() {
+interface CoffeeCardProps {
+  type: {
+    id: string
+    name: string
+    description: string
+    tags: string[]
+    price: number
+    image: string
+  }
+}
+
+const formatter = new Intl.NumberFormat('pt-BR', {
+  style: 'currency',
+  currency: 'BRL',
+})
+
+export function CoffeeCard({ type }: CoffeeCardProps) {
   return (
-    /* 
-        As tags vão precisar de um map, talvez até de um container separado.
-    */
     <CoffeeCardContainer>
-      <img src={TraditionalCoffee} alt="Uma xícara de café tradicional" />
+      <img src={type.image} alt={type.name} />
 
       <Tags>
-        <span>TRADICIONAL</span>{' '}
+        {type.tags.map((tag) => (
+          <span key={tag}>{tag}</span>
+        ))}
       </Tags>
-      <h1>Expresso Tradicional</h1>
-      <p>O tradicional café feito com água quente e grãos moídos </p>
+      <h1>{type.name}</h1>
+      <p>{type.description}</p>
 
       <CoffeCardOptions>
-        <h1>{'9,90'}</h1>
+        <h1>{formatter.format(type.price)}</h1>
 
         <form>
           {/* usar o Zod depois para fazer as validações */}

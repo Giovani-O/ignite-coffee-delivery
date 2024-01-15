@@ -39,7 +39,7 @@ export function Introduction() {
             </TopicIcon>
             <p>Embalagem mantém o café intacto</p>
           </Topic> */}
-          <Topic text="Compra simples e segura" backgroundColor="gray">
+          <Topic text="Embalagem mantém o café intacto" backgroundColor="gray">
             <Package weight="fill" size={14} />
           </Topic>
 
@@ -49,7 +49,7 @@ export function Introduction() {
             </TopicIcon>
             <p>Entrega rápida e rastreada</p>
           </Topic> */}
-          <Topic text="Compra simples e segura" backgroundColor="yellow">
+          <Topic text="Entrega rápida e rastreada" backgroundColor="yellow">
             <Timer weight="fill" size={14} />
           </Topic>
 
@@ -59,7 +59,10 @@ export function Introduction() {
             </TopicIcon>
             <p>O café chega fresquinho até você</p>
           </Topic> */}
-          <Topic text="Compra simples e segura" backgroundColor="purple">
+          <Topic
+            text="O café chega fresquinho até você"
+            backgroundColor="purple"
+          >
             <Coffee weight="fill" size={14} />
           </Topic>
         </TopicsGrid>

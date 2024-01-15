@@ -118,4 +118,5 @@ export const Tags = styled.div`
   display: flex;
   justify-content: center;
   padding: 0.75rem 0 1rem 0;
+  gap: 0.25rem;
 `

@@ -19,7 +19,7 @@ import {
 } from './styles'
 import { AddressForm } from './components/AddressForm'
 
-import Traditional from '../../assets/coffees/images/cafe-tradicional.png'
+import Traditional from '../../../public/images/cafe-tradicional.png'
 
 export function Checkout() {
   return (
