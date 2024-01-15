@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+# Coffee Delivery
+Minha solução para o segundo desafio da trilha de React do Ignite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Telas
 
-Currently, two official plugins are available:
+![Home](https://github.com/Giovani-O/ignite-coffee-delivery/assets/50748653/67cc8cf9-98b9-4e71-a134-ddbcad2d0906)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Store](https://github.com/Giovani-O/ignite-coffee-delivery/assets/50748653/27942faa-441f-4c20-beb2-1cf05eaea12a)
 
-## Expanding the ESLint configuration
+![Checkout](https://github.com/Giovani-O/ignite-coffee-delivery/assets/50748653/d9cd88c3-9f24-447d-95cd-c5d973b299a1)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![Complete](https://github.com/Giovani-O/ignite-coffee-delivery/assets/50748653/dabaa74e-aed2-4ffb-9c1c-f5f747d9796c)
 
-- Configure the top-level `parserOptions` property like this:
+## Execução
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Com os arquivos desse projeto em sua máquina, abra um terminal no diretório onde se encontra o index.html e execute os comandos:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+> npm i
+
+> npm run dev
+
+Depois, é só acessar o localhost com a porta indicada no terminal:
+
+![localhost](https://github.com/Giovani-O/ignite-coffee-delivery/assets/50748653/aa3e4299-2f40-4ef6-8680-164558981181)
