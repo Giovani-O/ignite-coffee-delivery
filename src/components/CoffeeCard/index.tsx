@@ -1,18 +1,11 @@
 import { ShoppingCartSimple } from '@phosphor-icons/react'
 
 import { CoffeeCardContainer, CoffeCardOptions, Tags } from './styles'
-import { useContext } from 'react'
-import { StoreContext } from '../../contexts/StoreContext'
+import { ChangeEvent, MouseEvent, useContext, useState } from 'react'
+import { StoreContext, Coffee } from '../../contexts/StoreContext'
 
 interface CoffeeCardProps {
-  type: {
-    id: string
-    name: string
-    description: string
-    tags: string[]
-    price: number
-    image: string
-  }
+  type: Coffee
 }
 
 const formatter = new Intl.NumberFormat('pt-BR', {
@@ -23,6 +16,24 @@ const formatter = new Intl.NumberFormat('pt-BR', {
 export function CoffeeCard({ type }: CoffeeCardProps) {
   const { currentPurchase, shoppingCart, setCurrentPurchase, setShoppingCart } =
     useContext(StoreContext)
+
+  const [coffeeAmount, setCoffeeAmount] = useState(1)
+
+  function handleAmountChange(event: ChangeEvent<HTMLInputElement>) {
+    setCoffeeAmount(event.target.valueAsNumber)
+  }
+
+  function handleAddToCart(event: MouseEvent<HTMLButtonElement>) {
+    event.preventDefault()
+    const coffeesToAddToCart = [] as Coffee[]
+
+    for (let i = 1; i <= coffeeAmount; i++) {
+      coffeesToAddToCart.push(type)
+    }
+
+    setShoppingCart(coffeesToAddToCart)
+    console.log(shoppingCart)
+  }
 
   return (
     <CoffeeCardContainer>
@@ -41,8 +52,15 @@ export function CoffeeCard({ type }: CoffeeCardProps) {
 
         <form>
           {/* usar o Zod depois para fazer as validações */}
-          <input type="number" placeholder="0" min={0} max={99} />
-          <button>
+          <input
+            type="number"
+            placeholder="0"
+            min={1}
+            max={99}
+            value={coffeeAmount}
+            onChange={handleAmountChange}
+          />
+          <button onClick={handleAddToCart}>
             <ShoppingCartSimple weight="fill" />
           </button>
         </form>
