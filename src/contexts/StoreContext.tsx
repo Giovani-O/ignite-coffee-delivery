@@ -1,6 +1,7 @@
 // Contexto da aplicação
 import { ReactNode, createContext, useState } from 'react'
 
+// Interface para tipar os cafés, pode ser reaproveitada
 export interface Coffee {
   id: string
   name: string
@@ -10,6 +11,7 @@ export interface Coffee {
   image: string
 }
 
+// Interface para tipar o contexto
 interface StoreContextType {
   currentPurchase: string
   shoppingCart: Coffee[]
@@ -17,13 +19,17 @@ interface StoreContextType {
   setShoppingCart: (shoppingCart: Coffee[]) => void
 }
 
-export const StoreContext = createContext({} as StoreContextType)
-
+// Interface para o context provider
 interface StoreContextProviderProps {
   children: ReactNode
 }
 
+// Criação do contexto
+export const StoreContext = createContext({} as StoreContextType)
+
+// Context provider
 export function StoreContextProvider({ children }: StoreContextProviderProps) {
+  // Estados
   const [currentPurchase, setCurrentPurchase] = useState('')
   const [shoppingCart, setShoppingCart] = useState([] as Coffee[])
 
