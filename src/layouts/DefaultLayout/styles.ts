@@ -10,3 +10,6 @@ export const LayoutContainer = styled.div`
     padding: 0 2rem;
   }
 `
+export const Spacer = styled.div`
+  height: 104px;
+`

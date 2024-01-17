@@ -57,6 +57,8 @@ export function CoffeeCard({ type }: CoffeeCardProps) {
       // Tomar cuidado com a imutabilidade
       setShoppingCart([...shoppingCart, ...coffeesToAddToCart])
     }
+
+    setCoffeeAmount(1)
   }
 
   return (

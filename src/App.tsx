@@ -10,7 +10,6 @@ export function App() {
     <ThemeProvider theme={defaultTheme}>
       <StoreContextProvider>
         <BrowserRouter>
-          {/* O Context Provider vai aqui */}
           <Router />
         </BrowserRouter>
 
