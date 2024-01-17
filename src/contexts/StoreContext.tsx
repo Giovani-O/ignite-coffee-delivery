@@ -1,3 +1,4 @@
+// Contexto da aplicação
 import { ReactNode, createContext, useState } from 'react'
 
 export interface Coffee {
