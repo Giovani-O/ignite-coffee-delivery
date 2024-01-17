@@ -1,6 +1,8 @@
 import { ShoppingCartSimple } from '@phosphor-icons/react'
 
 import { CoffeeCardContainer, CoffeCardOptions, Tags } from './styles'
+import { useContext } from 'react'
+import { StoreContext } from '../../contexts/StoreContext'
 
 interface CoffeeCardProps {
   type: {
@@ -19,6 +21,9 @@ const formatter = new Intl.NumberFormat('pt-BR', {
 })
 
 export function CoffeeCard({ type }: CoffeeCardProps) {
+  const { currentPurchase, shoppingCart, setCurrentPurchase, setShoppingCart } =
+    useContext(StoreContext)
+
   return (
     <CoffeeCardContainer>
       <img src={type.image} alt={type.name} />

@@ -3,16 +3,19 @@ import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
+import { StoreContextProvider } from './contexts/StoreContext'
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
-        {/* O Context Provider vai aqui */}
-        <Router />
-      </BrowserRouter>
+      <StoreContextProvider>
+        <BrowserRouter>
+          {/* O Context Provider vai aqui */}
+          <Router />
+        </BrowserRouter>
 
-      <GlobalStyle />
+        <GlobalStyle />
+      </StoreContextProvider>
     </ThemeProvider>
   )
 }
