@@ -11,12 +11,18 @@ export interface Coffee {
   image: string
 }
 
+// Interface para os cafés no carrinho
+export interface CoffeesInCart {
+  coffeeId: string
+  amount: number
+}
+
 // Interface para tipar o contexto
 interface StoreContextType {
   currentPurchase: string
-  shoppingCart: Coffee[]
+  shoppingCart: CoffeesInCart[]
   setCurrentPurchase: (currentPurchase: string) => void
-  setShoppingCart: (shoppingCart: Coffee[]) => void
+  setShoppingCart: (shoppingCart: CoffeesInCart[]) => void
 }
 
 // Interface para o context provider
@@ -31,7 +37,7 @@ export const StoreContext = createContext({} as StoreContextType)
 export function StoreContextProvider({ children }: StoreContextProviderProps) {
   // Estados
   const [currentPurchase, setCurrentPurchase] = useState('')
-  const [shoppingCart, setShoppingCart] = useState([] as Coffee[])
+  const [shoppingCart, setShoppingCart] = useState([] as CoffeesInCart[])
 
   return (
     <StoreContext.Provider

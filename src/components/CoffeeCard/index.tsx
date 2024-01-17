@@ -2,7 +2,11 @@ import { ShoppingCartSimple } from '@phosphor-icons/react'
 
 import { CoffeeCardContainer, CoffeCardOptions, Tags } from './styles'
 import { ChangeEvent, MouseEvent, useContext, useState } from 'react'
-import { StoreContext, Coffee } from '../../contexts/StoreContext'
+import {
+  StoreContext,
+  Coffee,
+  CoffeesInCart,
+} from '../../contexts/StoreContext'
 
 interface CoffeeCardProps {
   type: Coffee
@@ -14,25 +18,45 @@ const formatter = new Intl.NumberFormat('pt-BR', {
 })
 
 export function CoffeeCard({ type }: CoffeeCardProps) {
+  // uso do contexto
   const { currentPurchase, shoppingCart, setCurrentPurchase, setShoppingCart } =
     useContext(StoreContext)
 
   const [coffeeAmount, setCoffeeAmount] = useState(1)
 
+  // Funções para manipular eventos
   function handleAmountChange(event: ChangeEvent<HTMLInputElement>) {
     setCoffeeAmount(event.target.valueAsNumber)
   }
 
+  // Adiciona cafés ao carrinho
   function handleAddToCart(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
-    const coffeesToAddToCart = [] as Coffee[]
+    const coffeeInfo = {} as CoffeesInCart
+    const coffeesToAddToCart = [] as CoffeesInCart[]
 
-    for (let i = 1; i <= coffeeAmount; i++) {
-      coffeesToAddToCart.push(type)
+    // Verifica se o café já existe no carrinho
+    const existingCoffee = shoppingCart.find(
+      (item) => item.coffeeId === type.id,
+    )
+
+    // Se sim, só atualiza a quantidade
+    if (existingCoffee) {
+      const updatedCart = shoppingCart.map((item) =>
+        item.coffeeId === type.id
+          ? { ...item, amount: item.amount + coffeeAmount }
+          : item,
+      )
+      setShoppingCart(updatedCart)
+    } else {
+      coffeeInfo.coffeeId = type.id
+      coffeeInfo.amount = coffeeAmount
+
+      coffeesToAddToCart.push(coffeeInfo)
+
+      // Tomar cuidado com a imutabilidade
+      setShoppingCart([...shoppingCart, ...coffeesToAddToCart])
     }
-
-    setShoppingCart(coffeesToAddToCart)
-    console.log(shoppingCart)
   }
 
   return (
