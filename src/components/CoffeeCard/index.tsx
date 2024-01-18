@@ -19,8 +19,7 @@ const formatter = new Intl.NumberFormat('pt-BR', {
 
 export function CoffeeCard({ type }: CoffeeCardProps) {
   // uso do contexto
-  const { currentPurchase, shoppingCart, setCurrentPurchase, setShoppingCart } =
-    useContext(StoreContext)
+  const { shoppingCart, setShoppingCart } = useContext(StoreContext)
 
   const [coffeeAmount, setCoffeeAmount] = useState(1)
 

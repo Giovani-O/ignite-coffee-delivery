@@ -1,16 +1,16 @@
+import { useContext } from 'react'
+import { StoreContext } from '../../contexts/StoreContext'
 import {
   Bank,
   CreditCard,
   CurrencyDollar,
   MapPinLine,
   Money,
-  Trash,
 } from '@phosphor-icons/react'
 
 import {
   AddressWrapper,
   CheckoutWrapper,
-  CoffeeInfo,
   OrderDetailsWrapper,
   PaymentMethodButton,
   PaymentMethodButtonsContainer,
@@ -18,10 +18,33 @@ import {
   TotalPrices,
 } from './styles'
 import { AddressForm } from './components/AddressForm'
-
-import Traditional from '../../../public/images/cafe-tradicional.png'
+import CoffeesJson from '../../assets/coffees/CoffeesData.json'
+import { CoffeeInfo } from './components/CoffeeInfo'
 
 export function Checkout() {
+  const { shoppingCart, setShoppingCart } = useContext(StoreContext)
+
+  function getItemsValue() {
+    let total = 0
+
+    const values = shoppingCart.map((item) => {
+      const coffee = CoffeesJson.CoffeesData.find(
+        (coffee) => coffee.id === item.coffeeId,
+      )
+
+      return (coffee?.price || 0) * item.amount
+    })
+
+    total = values.reduce((sum, currentValue) => sum + currentValue, 0)
+
+    return total
+  }
+
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+
   return (
     <CheckoutWrapper>
       <section>
@@ -62,36 +85,22 @@ export function Checkout() {
       <section>
         <h1>Cafés selecionados</h1>
         <OrderDetailsWrapper>
-          <CoffeeInfo>
-            <div>
-              <img src={Traditional} alt="Café tradicional" />
-              <div>
-                <h2>{'Expresso Tradicional'}</h2>
-                <div>
-                  <input type="number" min="1" max="99"></input>
-
-                  <button>
-                    <Trash size={16} />
-                    <p>REMOVER</p>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <h1>{'9,90'}</h1>
-          </CoffeeInfo>
+          {shoppingCart.map((item) => (
+            <CoffeeInfo key={item.coffeeId} coffees={item} />
+          ))}
 
           <TotalPrices>
             <span>
               <p>Total de itens</p>
-              <p>{'29,70'}</p>
+              <p>{formatter.format(getItemsValue())}</p>
             </span>
             <span>
               <p>Entrega</p>
-              <p>{'3,50'}</p>
+              <p>{'R$ 3,50'}</p>
             </span>
             <span>
               <h1>Total</h1>
-              <h1>{'33,20'}</h1>
+              <h1>{formatter.format(getItemsValue() + 3.5)}</h1>
             </span>
 
             <button>CONFIRMAR PEDIDO</button>
