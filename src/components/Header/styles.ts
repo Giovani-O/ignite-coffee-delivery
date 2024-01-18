@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const HeaderContainer = styled.header`
+interface HeaderProps {
+  height: string
+}
+
+export const HeaderContainer = styled.header<HeaderProps>`
   position: fixed;
   z-index: 1000;
   display: flex;
@@ -8,12 +12,19 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   padding: 2rem 10rem;
 
+  box-shadow: 0 1px 5px
+    ${(props) =>
+      props.height === '54px' ? props.theme['base-input'] : 'transparent'};
+  height: ${(props) => props.height};
   width: 100%;
 
   background: ${(props) => props.theme.background};
 
+  transition: height 0.6s ease;
+
   @media (max-width: 768px) {
     padding: 1.75rem 0;
+    max-width: 82%;
   }
 `
 
