@@ -58,7 +58,9 @@ export const CoffeeInfoWrapper = styled.section`
     gap: 0.25rem;
     padding: 0 0.5rem;
     border-radius: 6px;
+    cursor: pointer;
 
+    transition: background-color 0.1s;
     color: ${(props) => props.theme.purple};
 
     p {

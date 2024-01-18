@@ -22,7 +22,7 @@ import CoffeesJson from '../../assets/coffees/CoffeesData.json'
 import { CoffeeInfo } from './components/CoffeeInfo'
 
 export function Checkout() {
-  const { shoppingCart, setShoppingCart } = useContext(StoreContext)
+  const { shoppingCart } = useContext(StoreContext)
 
   function getItemsValue() {
     let total = 0

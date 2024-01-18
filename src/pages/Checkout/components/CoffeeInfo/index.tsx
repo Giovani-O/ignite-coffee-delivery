@@ -1,14 +1,16 @@
 import { Trash } from '@phosphor-icons/react'
 import { CoffeeInfoWrapper } from './styles'
-import { CoffeesInCart } from '../../../../contexts/StoreContext'
+import { CoffeesInCart, StoreContext } from '../../../../contexts/StoreContext'
 import CoffeesJson from '../../../../assets/coffees/CoffeesData.json'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useContext } from 'react'
 
 interface CoffeeInfoProps {
   coffees: CoffeesInCart
 }
 
 export function CoffeeInfo({ coffees }: CoffeeInfoProps) {
+  const { shoppingCart, setShoppingCart } = useContext(StoreContext)
+
   const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -19,7 +21,20 @@ export function CoffeeInfo({ coffees }: CoffeeInfoProps) {
   )
 
   function handleAmountChange(event: ChangeEvent<HTMLInputElement>) {
-    console.log(event)
+    const updatedCart = shoppingCart.map((item) =>
+      item.coffeeId === coffees.coffeeId
+        ? { ...item, amount: event.target.valueAsNumber }
+        : item,
+    )
+    setShoppingCart(updatedCart)
+  }
+
+  function handleRemoveFromCart() {
+    const updatedStore = shoppingCart.filter(
+      (item) => item.coffeeId !== coffees.coffeeId,
+    )
+
+    setShoppingCart(updatedStore)
   }
 
   return (
@@ -37,7 +52,7 @@ export function CoffeeInfo({ coffees }: CoffeeInfoProps) {
               onChange={handleAmountChange}
             ></input>
 
-            <button>
+            <button onClick={handleRemoveFromCart}>
               <Trash size={16} />
               <p>REMOVER</p>
             </button>
