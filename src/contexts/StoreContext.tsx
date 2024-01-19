@@ -1,12 +1,7 @@
 // Contexto da aplicação
-import {
-  ReactNode,
-  createContext,
-  useEffect,
-  useReducer,
-  useState,
-} from 'react'
+import { ReactNode, createContext, useEffect, useReducer } from 'react'
 import { StoreState, storeReducer } from '../reducers/store/reducer'
+import { addToCartAction, updateCartAction } from '../reducers/store/actions'
 
 // Interface para tipar os cafés, pode ser reaproveitada
 export interface Coffee {
@@ -26,10 +21,9 @@ export interface CoffeesInCart {
 
 // Interface para tipar o contexto
 interface StoreContextType {
-  currentPurchase: string
-  shoppingCart: CoffeesInCart[]
-  setCurrentPurchase: (currentPurchase: string) => void
-  setShoppingCart: (shoppingCart: CoffeesInCart[]) => void
+  storeState: StoreState
+  addCoffeeToCart: (coffee: CoffeesInCart) => void
+  updateCart: (coffeeAmount: number, coffeeId: string) => void
 }
 
 // Interface para o context provider
@@ -42,17 +36,15 @@ export const StoreContext = createContext({} as StoreContextType)
 
 // Context provider
 export function StoreContextProvider({ children }: StoreContextProviderProps) {
-  // Estados
-  const [currentPurchase, setCurrentPurchase] = useState('')
-  const [shoppingCart, setShoppingCart] = useState([] as CoffeesInCart[])
-
   // usa o reducer, os parâmetros de useReducer são:
   /*
     reducer: A função criada no reducer.ts
     initialArg: O valor inicial do estado
     init: A função de inicialização do estado
   */
-  const initialArg = {} as StoreState
+  const initialArg: StoreState = {
+    shoppingCart: [],
+  }
   const [storeState, dispatch] = useReducer(
     storeReducer,
     initialArg,
@@ -76,13 +68,23 @@ export function StoreContextProvider({ children }: StoreContextProviderProps) {
     localStorage.setItem('@coffee-delivery:store-state-1.0.0', stateJSON)
   })
 
+  /// ///////////////////////////
+  /// Funções/ações do reducer //
+  /// ///////////////////////////
+  function addCoffeeToCart(coffee: CoffeesInCart) {
+    dispatch(addToCartAction(coffee))
+  }
+
+  function updateCart(coffeeAmount: number, coffeeId: string) {
+    dispatch(updateCartAction(coffeeAmount, coffeeId))
+  }
+
   return (
     <StoreContext.Provider
       value={{
-        currentPurchase,
-        shoppingCart,
-        setCurrentPurchase,
-        setShoppingCart,
+        storeState,
+        addCoffeeToCart,
+        updateCart,
       }}
     >
       {children}

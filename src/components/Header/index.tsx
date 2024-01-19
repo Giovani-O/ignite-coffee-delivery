@@ -11,9 +11,9 @@ import { useContext, useEffect, useState } from 'react'
 import { StoreContext, CoffeesInCart } from '../../contexts/StoreContext'
 
 export function Header() {
-  const { shoppingCart } = useContext(StoreContext)
+  const { storeState } = useContext(StoreContext)
 
-  const totalInCart = shoppingCart.reduce(
+  const totalInCart = storeState.shoppingCart.reduce(
     (total: number, cartItem: CoffeesInCart) => total + cartItem.amount,
     0,
   )

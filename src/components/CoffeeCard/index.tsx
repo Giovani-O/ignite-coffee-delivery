@@ -19,7 +19,7 @@ const formatter = new Intl.NumberFormat('pt-BR', {
 
 export function CoffeeCard({ type }: CoffeeCardProps) {
   // uso do contexto
-  const { shoppingCart, setShoppingCart } = useContext(StoreContext)
+  const { storeState, addCoffeeToCart, updateCart } = useContext(StoreContext)
 
   const [coffeeAmount, setCoffeeAmount] = useState(1)
 
@@ -32,29 +32,21 @@ export function CoffeeCard({ type }: CoffeeCardProps) {
   function handleAddToCart(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
     const coffeeInfo = {} as CoffeesInCart
-    const coffeesToAddToCart = [] as CoffeesInCart[]
+    // const coffeesToAddToCart = [] as CoffeesInCart[]
 
     // Verifica se o café já existe no carrinho
-    const existingCoffee = shoppingCart.find(
+    const existingCoffee = storeState.shoppingCart.find(
       (item) => item.coffeeId === type.id,
     )
 
     // Se sim, só atualiza a quantidade
     if (existingCoffee) {
-      const updatedCart = shoppingCart.map((item) =>
-        item.coffeeId === type.id
-          ? { ...item, amount: item.amount + coffeeAmount }
-          : item,
-      )
-      setShoppingCart(updatedCart)
+      updateCart(coffeeAmount, type.id)
     } else {
       coffeeInfo.coffeeId = type.id
       coffeeInfo.amount = coffeeAmount
-
-      coffeesToAddToCart.push(coffeeInfo)
-
-      // Tomar cuidado com a imutabilidade
-      setShoppingCart([...shoppingCart, ...coffeesToAddToCart])
+      addCoffeeToCart(coffeeInfo)
+      console.log(storeState)
     }
 
     setCoffeeAmount(1)

@@ -19,7 +19,7 @@ export function storeReducer(state: StoreState, action: any) {
       return produce(state, (draft) => {
         draft.shoppingCart = draft.shoppingCart.map((item) =>
           item.coffeeId === action.payload.coffeeId
-            ? { ...item, amount: action.payload.coffeeAmount }
+            ? { ...item, amount: item.amount + action.payload.coffeeAmount }
             : item,
         )
       })
