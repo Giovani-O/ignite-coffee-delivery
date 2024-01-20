@@ -1,7 +1,10 @@
 import { Container, Row, Col } from 'react-grid-system'
-import { TextInput } from '../../../../components/TextInput'
+import { useContext } from 'react'
+import { StoreContext } from '../../../../contexts/StoreContext'
+import { TextInput } from './styles'
 
 export function AddressForm() {
+  const { storeState } = useContext(StoreContext)
   return (
     <form>
       <Container>
