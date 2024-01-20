@@ -22,12 +22,12 @@ import CoffeesJson from '../../assets/coffees/CoffeesData.json'
 import { CoffeeInfo } from './components/CoffeeInfo'
 
 export function Checkout() {
-  const { shoppingCart } = useContext(StoreContext)
+  const { storeState } = useContext(StoreContext)
 
   function getItemsValue() {
     let total = 0
 
-    const values = shoppingCart.map((item) => {
+    const values = storeState.shoppingCart.map((item) => {
       const coffee = CoffeesJson.CoffeesData.find(
         (coffee) => coffee.id === item.coffeeId,
       )
@@ -85,7 +85,7 @@ export function Checkout() {
       <section>
         <h1>Cafés selecionados</h1>
         <OrderDetailsWrapper>
-          {shoppingCart.map((item) => (
+          {storeState.shoppingCart.map((item) => (
             <CoffeeInfo key={item.coffeeId} coffees={item} />
           ))}
 

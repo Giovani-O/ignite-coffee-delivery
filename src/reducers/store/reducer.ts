@@ -23,7 +23,15 @@ export function storeReducer(state: StoreState, action: any) {
             : item,
         )
       })
-    case ActionTypes.REMOVE_FROM_CART:
+    case ActionTypes.REMOVE_SINGLE_COFFEE:
+      return produce(state, (draft) => {
+        draft.shoppingCart = draft.shoppingCart.map((item) =>
+          item.coffeeId === action.payload.coffeeId
+            ? { ...item, amount: action.payload.coffeeAmount }
+            : item,
+        )
+      })
+    case ActionTypes.REMOVE_COFFEE_TYPE:
       return produce(state, (draft) => {
         draft.shoppingCart = draft.shoppingCart.filter(
           (item) => item.coffeeId !== action.payload.coffeeId,

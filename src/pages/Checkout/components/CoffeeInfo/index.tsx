@@ -9,7 +9,7 @@ interface CoffeeInfoProps {
 }
 
 export function CoffeeInfo({ coffees }: CoffeeInfoProps) {
-  const { shoppingCart, setShoppingCart } = useContext(StoreContext)
+  const { storeState } = useContext(StoreContext)
 
   const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -21,20 +21,20 @@ export function CoffeeInfo({ coffees }: CoffeeInfoProps) {
   )
 
   function handleAmountChange(event: ChangeEvent<HTMLInputElement>) {
-    const updatedCart = shoppingCart.map((item) =>
+    const updatedCart = storeState.shoppingCart.map((item) =>
       item.coffeeId === coffees.coffeeId
         ? { ...item, amount: event.target.valueAsNumber }
         : item,
     )
-    setShoppingCart(updatedCart)
+    // setShoppingCart(updatedCart)
   }
 
   function handleRemoveFromCart() {
-    const updatedStore = shoppingCart.filter(
+    const updatedStore = storeState.shoppingCart.filter(
       (item) => item.coffeeId !== coffees.coffeeId,
     )
 
-    setShoppingCart(updatedStore)
+    // setShoppingCart(updatedStore)
   }
 
   return (
