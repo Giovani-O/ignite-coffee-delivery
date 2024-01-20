@@ -1,7 +1,12 @@
 // Contexto da aplicação
 import { ReactNode, createContext, useEffect, useReducer } from 'react'
 import { StoreState, storeReducer } from '../reducers/store/reducer'
-import { addToCartAction, updateCartAction } from '../reducers/store/actions'
+import {
+  addToCartAction,
+  updateCartAction,
+  updateCartCheckoutAction,
+  removeCoffeeTypeAction,
+} from '../reducers/store/actions'
 
 // Interface para tipar os cafés, pode ser reaproveitada
 export interface Coffee {
@@ -24,6 +29,8 @@ interface StoreContextType {
   storeState: StoreState
   addCoffeeToCart: (coffee: CoffeesInCart) => void
   updateCart: (coffeeAmount: number, coffeeId: string) => void
+  updateCartCheckout: (coffeeId: string, coffeeAmount: number) => void
+  removeCoffeeType: (coffeeId: string) => void
 }
 
 // Interface para o context provider
@@ -79,12 +86,22 @@ export function StoreContextProvider({ children }: StoreContextProviderProps) {
     dispatch(updateCartAction(coffeeAmount, coffeeId))
   }
 
+  function updateCartCheckout(coffeeId: string, coffeeAmount: number) {
+    dispatch(updateCartCheckoutAction(coffeeId, coffeeAmount))
+  }
+
+  function removeCoffeeType(coffeeId: string) {
+    dispatch(removeCoffeeTypeAction(coffeeId))
+  }
+
   return (
     <StoreContext.Provider
       value={{
         storeState,
         addCoffeeToCart,
         updateCart,
+        updateCartCheckout,
+        removeCoffeeType,
       }}
     >
       {children}

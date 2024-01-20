@@ -4,12 +4,17 @@ import { CoffeesInCart, StoreContext } from '../../../../contexts/StoreContext'
 import CoffeesJson from '../../../../assets/coffees/CoffeesData.json'
 import { ChangeEvent, useContext } from 'react'
 
+// Validações com Zod
+import { ZodError, z } from 'zod'
+const schema = z.number().int().min(1).max(99)
+
 interface CoffeeInfoProps {
   coffees: CoffeesInCart
 }
 
 export function CoffeeInfo({ coffees }: CoffeeInfoProps) {
-  const { storeState } = useContext(StoreContext)
+  const { storeState, updateCartCheckout, removeCoffeeType } =
+    useContext(StoreContext)
 
   const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -21,20 +26,25 @@ export function CoffeeInfo({ coffees }: CoffeeInfoProps) {
   )
 
   function handleAmountChange(event: ChangeEvent<HTMLInputElement>) {
-    const updatedCart = storeState.shoppingCart.map((item) =>
-      item.coffeeId === coffees.coffeeId
-        ? { ...item, amount: event.target.valueAsNumber }
-        : item,
-    )
-    // setShoppingCart(updatedCart)
+    const validatedValue = schema.parse(event.target.valueAsNumber)
+
+    try {
+      storeState.shoppingCart.map((item) =>
+        item.coffeeId === coffees.coffeeId
+          ? updateCartCheckout(item.coffeeId, validatedValue)
+          : item,
+      )
+    } catch (error) {
+      if (error instanceof ZodError) {
+        console.error(error.errors)
+      } else {
+        console.error('Valor inválido')
+      }
+    }
   }
 
   function handleRemoveFromCart() {
-    const updatedStore = storeState.shoppingCart.filter(
-      (item) => item.coffeeId !== coffees.coffeeId,
-    )
-
-    // setShoppingCart(updatedStore)
+    removeCoffeeType(coffees.coffeeId)
   }
 
   return (

@@ -3,7 +3,7 @@ import { CoffeesInCart } from '../../contexts/StoreContext'
 export enum ActionTypes {
   ADD_TO_CART = 'ADD_TO_CART',
   UPDATE_CART = 'UPDATE_CART',
-  REMOVE_SINGLE_COFFEE = 'REMOVE_SINGLE_COFFEE',
+  UPDATE_CART_CHECKOUT = 'UPDATE_CART_CHECKOUT',
   REMOVE_COFFEE_TYPE = 'REMOVE_COFFEE_TYPE',
   PAYMENT = 'PAYMENT',
 }
@@ -27,9 +27,12 @@ export function updateCartAction(coffeeAmount: number, coffeeId: string) {
   }
 }
 
-export function removeSingleCoffee(coffeeId: string, coffeeAmount: number) {
+export function updateCartCheckoutAction(
+  coffeeId: string,
+  coffeeAmount: number,
+) {
   return {
-    type: ActionTypes.REMOVE_SINGLE_COFFEE,
+    type: ActionTypes.UPDATE_CART_CHECKOUT,
     payload: {
       coffeeId,
       coffeeAmount,
@@ -37,7 +40,7 @@ export function removeSingleCoffee(coffeeId: string, coffeeAmount: number) {
   }
 }
 
-export function removeAllFromCartAction(coffeeId: string) {
+export function removeCoffeeTypeAction(coffeeId: string) {
   return {
     type: ActionTypes.REMOVE_COFFEE_TYPE,
     payload: {
