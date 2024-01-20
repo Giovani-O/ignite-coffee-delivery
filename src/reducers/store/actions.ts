@@ -1,11 +1,12 @@
-import { CoffeesInCart } from '../../contexts/StoreContext'
+import { Address, CoffeesInCart } from '../../contexts/StoreContext'
 
 export enum ActionTypes {
   ADD_TO_CART = 'ADD_TO_CART',
   UPDATE_CART = 'UPDATE_CART',
   UPDATE_CART_CHECKOUT = 'UPDATE_CART_CHECKOUT',
   REMOVE_COFFEE_TYPE = 'REMOVE_COFFEE_TYPE',
-  PAYMENT = 'PAYMENT',
+  ADD_ADDRESS_INFO = 'ADD_ADDRESS_INFO',
+  SELECT_PAYMENT_METHOD = 'SELECT_PAYMENT_METHOD',
 }
 
 export function addToCartAction(coffeeType: CoffeesInCart) {
@@ -49,9 +50,20 @@ export function removeCoffeeTypeAction(coffeeId: string) {
   }
 }
 
-export function paymentAction() {
+export function addAddressInfoAction(address: Address) {
   return {
-    type: ActionTypes.PAYMENT,
-    payload: {},
+    type: ActionTypes.SELECT_PAYMENT_METHOD,
+    payload: {
+      address,
+    },
+  }
+}
+
+export function selectPaymentMethodAction(paymentMethod: string) {
+  return {
+    type: ActionTypes.SELECT_PAYMENT_METHOD,
+    payload: {
+      paymentMethod,
+    },
   }
 }

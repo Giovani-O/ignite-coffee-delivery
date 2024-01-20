@@ -1,9 +1,11 @@
 import { produce } from 'immer'
-import { CoffeesInCart } from '../../contexts/StoreContext'
+import { Address, CoffeesInCart } from '../../contexts/StoreContext'
 import { ActionTypes } from './actions'
 
 export interface StoreState {
   shoppingCart: CoffeesInCart[]
+  address: Address
+  paymentMethod: string
 }
 
 // Cria o reducer
@@ -36,6 +38,14 @@ export function storeReducer(state: StoreState, action: any) {
         draft.shoppingCart = draft.shoppingCart.filter(
           (item) => item.coffeeId !== action.payload.coffeeId,
         )
+      })
+    case ActionTypes.ADD_ADDRESS_INFO:
+      return produce(state, (draft) => {
+        draft.address = action.payload.address
+      })
+    case ActionTypes.SELECT_PAYMENT_METHOD:
+      return produce(state, (draft) => {
+        draft.paymentMethod = action.payload.paymentMethod
       })
     default:
       console.warn('Ação desconhecida')
