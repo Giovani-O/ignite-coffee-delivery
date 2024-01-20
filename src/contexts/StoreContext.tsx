@@ -65,7 +65,15 @@ export function StoreContextProvider({ children }: StoreContextProviderProps) {
   */
   const initialArg: StoreState = {
     shoppingCart: [],
-    address: {} as Address,
+    address: {
+      zipCode: '',
+      street: '',
+      number: '',
+      complement: '',
+      neighbourhood: '',
+      city: '',
+      state: '',
+    } as Address,
     paymentMethod: '',
   }
   const [storeState, dispatch] = useReducer(
