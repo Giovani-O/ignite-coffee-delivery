@@ -1,5 +1,6 @@
 # Coffee Delivery
-Minha solução para o segundo desafio da trilha de React do Ignite
+Minha solução para o segundo desafio da trilha de React do Ignite.
+Durante o desenvolvimento eu pude exercitar o uso de Styled Components, Hooks, Contextos, Reducers e muito mais.
 
 ## Telas
 
