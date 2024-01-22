@@ -46,7 +46,6 @@ export function CoffeeCard({ type }: CoffeeCardProps) {
       coffeeInfo.coffeeId = type.id
       coffeeInfo.amount = coffeeAmount
       addCoffeeToCart(coffeeInfo)
-      console.log(storeState)
     }
 
     setCoffeeAmount(1)

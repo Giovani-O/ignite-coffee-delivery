@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { StoreContext } from '../../contexts/StoreContext'
 import {
   Bank,
@@ -23,6 +23,7 @@ import { CoffeeInfo } from './components/CoffeeInfo'
 
 export function Checkout() {
   const { storeState } = useContext(StoreContext)
+  const formRef = useRef<HTMLFormElement | null>(null)
 
   function getItemsValue() {
     let total = 0
@@ -38,6 +39,12 @@ export function Checkout() {
     total = values.reduce((sum, currentValue) => sum + currentValue, 0)
 
     return total
+  }
+
+  function handleConfirmOrder() {
+    // Posso pegar os valores no objeto elements
+    // Por exemplo, formRef.current?.elements.city.value
+    console.log(formRef.current?.elements)
   }
 
   const formatter = new Intl.NumberFormat('pt-BR', {
@@ -56,7 +63,7 @@ export function Checkout() {
           </span>
           <p>Informe o endereço onde deseja receber seu pedido</p>
 
-          <AddressForm />
+          <AddressForm formReference={formRef} />
         </AddressWrapper>
 
         <PaymentMethodWrapper>
@@ -103,7 +110,7 @@ export function Checkout() {
               <h1>{formatter.format(getItemsValue() + 3.5)}</h1>
             </span>
 
-            <button>CONFIRMAR PEDIDO</button>
+            <button onClick={handleConfirmOrder}>CONFIRMAR PEDIDO</button>
           </TotalPrices>
         </OrderDetailsWrapper>
       </section>
