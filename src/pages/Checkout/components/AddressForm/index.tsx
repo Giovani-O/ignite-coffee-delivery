@@ -1,12 +1,8 @@
 import { Container, Row, Col } from 'react-grid-system'
 import { TextInput } from './styles'
 import { useFormContext } from 'react-hook-form'
-import { useContext } from 'react'
-import { StoreContext } from '../../../../contexts/StoreContext'
 
 export function AddressForm() {
-  const { storeState } = useContext(StoreContext)
-
   // Importa register do react-hook-form
   const { register } = useFormContext()
 

@@ -23,6 +23,7 @@ import { CoffeeInfo } from './components/CoffeeInfo'
 import { FormProvider, useForm } from 'react-hook-form'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from 'react-router-dom'
 
 export function Checkout() {
   const { storeState, selectPaymentMethod, addAddressInfo } =
@@ -30,13 +31,13 @@ export function Checkout() {
 
   // Regras de validação
   const addressFormValidationSchema = zod.object({
-    zipCode: zod.string().min(1),
-    street: zod.string().min(1),
-    number: zod.string().min(1),
-    complement: zod.string().optional(),
-    neighbourhood: zod.string().min(1),
-    city: zod.string().min(1),
-    state: zod.string().min(1),
+    zipCode: zod.string().min(1, 'Campo obrigatório'),
+    street: zod.string().min(1, 'Campo obrigatório'),
+    number: zod.string().min(1, 'Campo obrigatório'),
+    complement: zod.string(),
+    neighbourhood: zod.string().min(1, 'Campo obrigatório'),
+    city: zod.string().min(1, 'Campo obrigatório'),
+    state: zod.string().min(1, 'Campo obrigatório'),
   })
 
   // Obtenção de tipo
@@ -58,6 +59,8 @@ export function Checkout() {
 
   // Obtenção dos métodos
   const { handleSubmit } = addressForm
+
+  const navigate = useNavigate()
 
   function getItemsValue() {
     let total = 0
@@ -82,8 +85,26 @@ export function Checkout() {
     selectPaymentMethod(paymentMethod)
   }
 
-  function handleConfirmOrder(data: Address) {
-    addAddressInfo(data)
+  function handleConfirmOrder(data: AddressFormData) {
+    // Fazer uma validação aqui, só adicionar o endereço no state caso esteja tudo certo com o pedido
+    if (
+      storeState.shoppingCart.length > 0 &&
+      Object.values(PaymentType).includes(storeState.paymentMethod ?? -1)
+    ) {
+      const address: Address = {
+        zipCode: data.zipCode,
+        street: data.street,
+        number: data.number,
+        complement: data.complement,
+        neighbourhood: data.neighbourhood,
+        city: data.city,
+        state: data.state,
+      }
+
+      addAddressInfo(address)
+
+      navigate('/checkout/complete')
+    }
   }
 
   const formatter = new Intl.NumberFormat('pt-BR', {
@@ -119,6 +140,7 @@ export function Checkout() {
 
             <PaymentMethodButtonsContainer>
               <PaymentMethodButton
+                type="button"
                 onClick={(event) =>
                   handleSelectPaymentMethod(event, PaymentType.credit)
                 }
@@ -126,6 +148,7 @@ export function Checkout() {
                 <CreditCard /> <p>CARTÃO DE CRÉDITO</p>
               </PaymentMethodButton>
               <PaymentMethodButton
+                type="button"
                 onClick={(event) =>
                   handleSelectPaymentMethod(event, PaymentType.debit)
                 }
@@ -133,6 +156,7 @@ export function Checkout() {
                 <Bank /> <p>CARTÃO DE DÉBITO</p>
               </PaymentMethodButton>
               <PaymentMethodButton
+                type="button"
                 onClick={(event) =>
                   handleSelectPaymentMethod(event, PaymentType.money)
                 }
