@@ -1,33 +1,35 @@
 import styled from 'styled-components'
 
 export const CheckoutWrapper = styled.main`
-  padding: 0.5rem 10rem 15rem 10rem;
-  display: flex;
-  gap: 2rem;
-  justify-content: space-between;
-  width: 100%;
-
-  @media (max-width: 768px) {
-    padding: 2.75rem 0;
-    background-image: none;
-    flex-direction: column;
-  }
-
-  section {
+  form {
+    padding: 0.5rem 10rem 15rem 10rem;
     display: flex;
-    gap: 0.75rem;
-    min-width: 40%;
-  }
+    gap: 2rem;
+    justify-content: space-between;
+    width: 100%;
 
-  & > section {
-    flex-direction: column;
-  }
+    @media (max-width: 768px) {
+      padding: 2.75rem 0;
+      background-image: none;
+      flex-direction: column;
+    }
 
-  section h1 {
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 800;
-    color: ${(props) => props.theme['base-subtitle']};
+    section {
+      display: flex;
+      gap: 0.75rem;
+      min-width: 40%;
+    }
+
+    & > section {
+      flex-direction: column;
+    }
+
+    section h1 {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: ${(props) => props.theme['base-subtitle']};
+    }
   }
 `
 

@@ -5,7 +5,7 @@ import { ActionTypes } from './actions'
 export interface StoreState {
   shoppingCart: CoffeesInCart[]
   address: Address
-  paymentMethod: string
+  paymentMethod: number | undefined
 }
 
 // Cria o reducer

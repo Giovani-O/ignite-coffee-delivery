@@ -36,6 +36,12 @@ export interface Address {
   state: string
 }
 
+export enum PaymentType {
+  credit = 0,
+  debit = 1,
+  money = 2,
+}
+
 // Interface para tipar o contexto
 interface StoreContextType {
   storeState: StoreState
@@ -44,7 +50,7 @@ interface StoreContextType {
   updateCartCheckout: (coffeeId: string, coffeeAmount: number) => void
   removeCoffeeType: (coffeeId: string) => void
   addAddressInfo: (address: Address) => void
-  selectPaymentMethod: (paymentMethod: string) => void
+  selectPaymentMethod: (paymentMethod: number | undefined) => void
 }
 
 // Interface para o context provider
@@ -74,7 +80,7 @@ export function StoreContextProvider({ children }: StoreContextProviderProps) {
       city: '',
       state: '',
     } as Address,
-    paymentMethod: '',
+    paymentMethod: undefined,
   }
   const [storeState, dispatch] = useReducer(
     storeReducer,
@@ -122,7 +128,7 @@ export function StoreContextProvider({ children }: StoreContextProviderProps) {
     dispatch(addAddressInfoAction(address))
   }
 
-  function selectPaymentMethod(paymentMethod: string) {
+  function selectPaymentMethod(paymentMethod: number | undefined) {
     dispatch(selectPaymentMethodAction(paymentMethod))
   }
 

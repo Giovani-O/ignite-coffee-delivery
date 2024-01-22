@@ -52,14 +52,14 @@ export function removeCoffeeTypeAction(coffeeId: string) {
 
 export function addAddressInfoAction(address: Address) {
   return {
-    type: ActionTypes.SELECT_PAYMENT_METHOD,
+    type: ActionTypes.ADD_ADDRESS_INFO,
     payload: {
       address,
     },
   }
 }
 
-export function selectPaymentMethodAction(paymentMethod: string) {
+export function selectPaymentMethodAction(paymentMethod: number | undefined) {
   return {
     type: ActionTypes.SELECT_PAYMENT_METHOD,
     payload: {
