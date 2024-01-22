@@ -1,12 +1,18 @@
 import { CompleteOrderContainer, CompleteOrderInfo } from './styles'
 import Delivery from '../../assets/images/delivery.svg'
-import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
+import { CheckFat, CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import { Topic } from '../../components/Topic'
 import { useContext } from 'react'
-import { StoreContext } from '../../contexts/StoreContext'
+import {
+  Address,
+  CoffeesInCart,
+  StoreContext,
+} from '../../contexts/StoreContext'
+import { useNavigate } from 'react-router-dom'
 
 export function Complete() {
-  const { storeState } = useContext(StoreContext)
+  const { storeState, cleanState } = useContext(StoreContext)
+  const navigate = useNavigate()
 
   const getPaymentMethod = () => {
     switch (storeState.paymentMethod) {
@@ -19,6 +25,23 @@ export function Complete() {
       default:
         return ''
     }
+  }
+
+  function handleFinishOrder() {
+    const shoppingCart: CoffeesInCart[] = [] as CoffeesInCart[]
+    const paymentMethod: number | undefined = undefined
+    const address: Address = {
+      zipCode: '',
+      street: '',
+      number: '',
+      complement: '',
+      neighbourhood: '',
+      city: '',
+      state: '',
+    }
+
+    cleanState(shoppingCart, address, paymentMethod)
+    navigate('/')
   }
 
   return (
@@ -67,6 +90,10 @@ export function Complete() {
               </p>
             </span>
           </div>
+
+          <button onClick={handleFinishOrder}>
+            <CheckFat weight="fill" /> FINALIZAR PEDIDO
+          </button>
         </section>
 
         <img src={Delivery} alt="Pessoa de moto fazendo a entrega" />

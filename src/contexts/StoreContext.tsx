@@ -8,6 +8,7 @@ import {
   removeCoffeeTypeAction,
   addAddressInfoAction,
   selectPaymentMethodAction,
+  cleanStateAction,
 } from '../reducers/store/actions'
 
 // Interface para tipar os cafés, pode ser reaproveitada
@@ -51,6 +52,11 @@ interface StoreContextType {
   removeCoffeeType: (coffeeId: string) => void
   addAddressInfo: (address: Address) => void
   selectPaymentMethod: (paymentMethod: number | undefined) => void
+  cleanState: (
+    shoppingCart: CoffeesInCart[],
+    address: Address,
+    paymentMethod: number | undefined,
+  ) => void
 }
 
 // Interface para o context provider
@@ -132,6 +138,14 @@ export function StoreContextProvider({ children }: StoreContextProviderProps) {
     dispatch(selectPaymentMethodAction(paymentMethod))
   }
 
+  function cleanState(
+    shoppingCart: CoffeesInCart[] = [] as CoffeesInCart[],
+    address: Address = initialArg.address,
+    paymentMethod: number | undefined = undefined,
+  ) {
+    dispatch(cleanStateAction(shoppingCart, address, paymentMethod))
+  }
+
   return (
     <StoreContext.Provider
       value={{
@@ -142,6 +156,7 @@ export function StoreContextProvider({ children }: StoreContextProviderProps) {
         removeCoffeeType,
         addAddressInfo,
         selectPaymentMethod,
+        cleanState,
       }}
     >
       {children}

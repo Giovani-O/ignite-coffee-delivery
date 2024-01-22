@@ -82,5 +82,28 @@ export const CompleteOrderInfo = styled.section`
       flex-direction: row;
       align-items: center;
     }
+
+    button {
+      border: 1px solid transparent;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 0.5rem;
+      border-radius: 6px;
+      background: ${(props) => props.theme.purple};
+      color: ${(props) => props.theme.white};
+      cursor: pointer;
+      transition: 0.1s background-color;
+
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 130%;
+
+      &:hover {
+        background: ${(props) => props.theme['purple-dark']};
+      }
+    }
   }
 `

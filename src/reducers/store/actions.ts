@@ -7,6 +7,7 @@ export enum ActionTypes {
   REMOVE_COFFEE_TYPE = 'REMOVE_COFFEE_TYPE',
   ADD_ADDRESS_INFO = 'ADD_ADDRESS_INFO',
   SELECT_PAYMENT_METHOD = 'SELECT_PAYMENT_METHOD',
+  CLEAN_STATE = 'CLEAN_STATE',
 }
 
 export function addToCartAction(coffeeType: CoffeesInCart) {
@@ -63,6 +64,21 @@ export function selectPaymentMethodAction(paymentMethod: number | undefined) {
   return {
     type: ActionTypes.SELECT_PAYMENT_METHOD,
     payload: {
+      paymentMethod,
+    },
+  }
+}
+
+export function cleanStateAction(
+  shoppingCart: CoffeesInCart[],
+  address: Address,
+  paymentMethod: number | undefined,
+) {
+  return {
+    type: ActionTypes.CLEAN_STATE,
+    payload: {
+      shoppingCart,
+      address,
       paymentMethod,
     },
   }

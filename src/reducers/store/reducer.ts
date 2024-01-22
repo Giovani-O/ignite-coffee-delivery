@@ -47,6 +47,12 @@ export function storeReducer(state: StoreState, action: any) {
       return produce(state, (draft) => {
         draft.paymentMethod = action.payload.paymentMethod
       })
+    case ActionTypes.CLEAN_STATE:
+      return produce(state, (draft) => {
+        draft.shoppingCart = action.payload.shoppingCart
+        draft.address = action.payload.address
+        draft.paymentMethod = action.payload.paymentMethod
+      })
     default:
       console.warn('Ação desconhecida')
       return state

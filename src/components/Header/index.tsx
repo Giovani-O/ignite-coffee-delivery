@@ -6,12 +6,13 @@ import {
   ShoppingCart,
 } from './styles'
 import Logo from '../../assets/images/logo.svg'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { StoreContext, CoffeesInCart } from '../../contexts/StoreContext'
 
 export function Header() {
   const { storeState } = useContext(StoreContext)
+  const location = useLocation()
 
   const totalInCart = storeState.shoppingCart.reduce(
     (total: number, cartItem: CoffeesInCart) => total + cartItem.amount,
@@ -35,21 +36,32 @@ export function Header() {
 
   return (
     <HeaderContainer height={scrollY > 50 ? '54px' : '104px'}>
-      <NavLink to="/" title="Home">
+      {location.pathname === '/checkout/complete' ? (
         <img src={Logo} alt="" />
-      </NavLink>
+      ) : (
+        <NavLink to="/" title="Home">
+          <img src={Logo} alt="" />
+        </NavLink>
+      )}
 
       <HeaderSubcontainer>
         <Location>
           <MapPin weight="fill" />
           <p>Hortolândia, SP</p>
         </Location>
-        <NavLink to="/checkout" title="Pagamento">
+        {location.pathname === '/checkout/complete' ? (
           <ShoppingCart>
             <ShoppingCartSimple weight="fill" />
             {totalInCart > 0 && <span className="badge">{totalInCart}</span>}
           </ShoppingCart>
-        </NavLink>
+        ) : (
+          <NavLink to="/checkout" title="Pagamento">
+            <ShoppingCart>
+              <ShoppingCartSimple weight="fill" />
+              {totalInCart > 0 && <span className="badge">{totalInCart}</span>}
+            </ShoppingCart>
+          </NavLink>
+        )}
       </HeaderSubcontainer>
     </HeaderContainer>
   )
