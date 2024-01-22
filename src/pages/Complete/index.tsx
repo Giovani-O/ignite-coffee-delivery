@@ -2,8 +2,25 @@ import { CompleteOrderContainer, CompleteOrderInfo } from './styles'
 import Delivery from '../../assets/images/delivery.svg'
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import { Topic } from '../../components/Topic'
+import { useContext } from 'react'
+import { StoreContext } from '../../contexts/StoreContext'
 
 export function Complete() {
+  const { storeState } = useContext(StoreContext)
+
+  const getPaymentMethod = () => {
+    switch (storeState.paymentMethod) {
+      case 0:
+        return 'Cartão de crédito'
+      case 1:
+        return 'Cartão de débito'
+      case 2:
+        return 'Dinheiro'
+      default:
+        return ''
+    }
+  }
+
   return (
     <CompleteOrderContainer>
       <h1>Uhu! Pedido confirmado</h1>
@@ -17,9 +34,15 @@ export function Complete() {
             </Topic>
             <span>
               <p>
-                Entrega em <strong>Rua Luís Camilo de Camargo, 102</strong>
+                Entrega em{' '}
+                <strong>
+                  {storeState.address.street}, {storeState.address.number}
+                </strong>
               </p>
-              <p>Centro - Hortolândia, SP</p>
+              <p>
+                {storeState.address.neighbourhood} - {storeState.address.city},{' '}
+                {storeState.address.state}
+              </p>
             </span>
           </div>
           <div>
@@ -40,7 +63,7 @@ export function Complete() {
             <span>
               <p>Pagamento na entrega</p>
               <p>
-                <strong>Cartão de Crédito</strong>
+                <strong>{getPaymentMethod()}</strong>
               </p>
             </span>
           </div>
