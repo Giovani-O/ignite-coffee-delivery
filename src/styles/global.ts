@@ -9,6 +9,10 @@ export const GlobalStyle = createGlobalStyle`
     @media (max-width: 768px) {
       font-size: 18px;
     }
+
+    @media (min-width: 1600px) {
+      font-size: 20px;
+    }
   }
 
   :focus {

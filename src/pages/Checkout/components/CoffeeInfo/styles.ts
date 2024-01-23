@@ -10,6 +10,7 @@ export const CoffeeInfoWrapper = styled.section`
 
   img {
     max-width: 64px;
+    max-height: 64px;
   }
 
   & > div {
@@ -65,6 +66,12 @@ export const CoffeeInfoWrapper = styled.section`
 
     p {
       color: ${(props) => props.theme['base-text']};
+    }
+
+    @media (min-width: 1600px) {
+      p {
+        font-size: 16px;
+      }
     }
   }
 

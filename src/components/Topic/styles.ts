@@ -41,4 +41,9 @@ export const TopicIcon = styled.span<TopicIconBackground>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media only screen and (min-width: 1600px) {
+    width: 40px;
+    height: 40px;
+  }
 `

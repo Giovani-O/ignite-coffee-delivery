@@ -22,7 +22,7 @@ export const CompleteOrderContainer = styled.main`
   }
 
   img {
-    max-height: 280px;
+    max-width: 470px;
   }
 
   @media (max-width: 768px) {
@@ -30,6 +30,12 @@ export const CompleteOrderContainer = styled.main`
 
     img {
       display: none;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    img {
+      max-width: 800px;
     }
   }
 `

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const StoreContainer = styled.main`
   padding: 0 10rem 10rem 10rem;
+  margin-top: 2rem;
 
   @media (max-width: 768px) {
     padding: 2.75rem 0;
