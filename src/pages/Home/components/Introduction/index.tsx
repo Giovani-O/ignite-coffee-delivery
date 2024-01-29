@@ -2,16 +2,15 @@ import {
   IntroductionContainer,
   IntroductionContent,
   TopicsGrid,
-} from './styles'
-import IntroductionImage from '../../../../assets/images/introduction-image.svg'
+} from "./styles";
+import IntroductionImage from "../../../../assets/images/introduction-image.svg";
 import {
   Coffee,
   Package,
   ShoppingCartSimple,
   Timer,
-} from '@phosphor-icons/react'
-import { Topic } from '../../../../components/Topic'
-import { useRef } from 'react'
+} from "@phosphor-icons/react";
+import { Topic } from "../../../../components/Topic";
 
 export function Introduction() {
   return (
@@ -47,5 +46,5 @@ export function Introduction() {
 
       <img src={IntroductionImage} alt="" />
     </IntroductionContainer>
-  )
+  );
 }
