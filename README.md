@@ -2,7 +2,7 @@
 Minha solução para o segundo desafio da trilha de React do Ignite.
 Durante o desenvolvimento eu pude exercitar o uso de Styled Components, Hooks, Contextos, Reducers e muito mais.
 
-[Demonstração da aplicação](https://ignite-coffee-delivery-qj003y5el-giovani-o.vercel.app/).
+[Demonstração da aplicação](https://ignite-coffee-delivery-drab.vercel.app/).
 
 ## Telas
 
