@@ -55,7 +55,7 @@ export function Header() {
             {totalInCart > 0 && <span className="badge">{totalInCart}</span>}
           </ShoppingCart>
         ) : (
-          <NavLink to="/checkout" title="Pagamento">
+          <NavLink to={totalInCart > 0 ? '/checkout' : '/'} title="Pagamento">
             <ShoppingCart>
               <ShoppingCartSimple weight="fill" />
               {totalInCart > 0 && <span className="badge">{totalInCart}</span>}
