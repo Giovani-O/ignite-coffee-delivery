@@ -19,7 +19,9 @@ Durante o desenvolvimento eu pude exercitar o uso de Styled Components, Hooks, C
 Com os arquivos desse projeto em sua máquina, abra um terminal no diretório onde se encontra o index.html e execute os comandos:
 
 > npm i
+
 > npm run dev
+
 Depois, é só acessar o localhost com a porta indicada no terminal:
 
 ![localhost](https://github.com/Giovani-O/ignite-coffee-delivery/assets/50748653/aa3e4299-2f40-4ef6-8680-164558981181)
